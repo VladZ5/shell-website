@@ -6,6 +6,8 @@ import { mkdir } from "./commands/mkdir";
 import { ls } from "./commands/ls";
 import { cd } from "./commands/cd";
 import { touch } from "./commands/touch";
+import { edit } from "./commands/edit";
+import { cat } from "./commands/cat";
 
 export const CommandHandler = (latestInput: string, state: TerminalState): CommandResult => {
     const {command, args} = argParsing(latestInput);
@@ -34,7 +36,7 @@ export const CommandHandler = (latestInput: string, state: TerminalState): Comma
             };
 
         case 'cat':
-            return { output: "cat: command not yet implemented", newState: state };
+            return cat(state, args);
 
         case 'cd':
             return cd(state, args);
@@ -44,6 +46,9 @@ export const CommandHandler = (latestInput: string, state: TerminalState): Comma
 
         case 'contact':
             return { output: "contact: command not yet implemented", newState: state };
+
+        case 'edit':
+            return edit(state, args);
 
         case 'education':
             return { output: "education: command not yet implemented", newState: state };

@@ -30,12 +30,15 @@ export const mkdir = (currState: TerminalState, args: string[]) => {
    
 
    current[name] = {};
+
+   const newDirPath = '/' + currState.currDirPath.join('/') + '/' + name;
    
    return {
        output: "",
        newState: {
            ...currState,              
-           fileSystem: newFileSystem   
+           fileSystem: newFileSystem,
+           userCreatedItems: [...currState.userCreatedItems, newDirPath],
        }
    };
 }

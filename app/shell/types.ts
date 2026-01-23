@@ -5,6 +5,7 @@ export type FileSystem = {
 export type TerminalState = {
     fileSystem: FileSystem,
     currDirPath: string[],
+    userCreatedItems: string[],
 }
 
 export type CommandResult = {

@@ -32,11 +32,14 @@ export const touch = (currState: TerminalState, args: string[]) => {
 
     current[filename] = "";
 
+    const newDirPath = '/' + currState.currDirPath.join('/') + '/' + filename;
+
     return {
         output: "",
         newState: {
             ...currState,
-            fileSystem: newFileSystem
+            fileSystem: newFileSystem,
+            userCreatedItems: [...currState.userCreatedItems, newDirPath]
         }
     }
 }
